@@ -19,12 +19,16 @@
 
     <dependencies>
 
-        // add kafka connector and maybe slf4j
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>2.3.0</version>
+        </dependency>
         <dependency>
           <groupId>io.openliberty.features</groupId>
           <artifactId>mpReactiveMessaging-1.0</artifactId>
           <type>esa</type>
-              <!--          <version>19.0.0.12</version> -->
+              <version>19.0.0.12</version>
         </dependency>
 
         <!-- Aggregate of MicroProfile APIs -->
