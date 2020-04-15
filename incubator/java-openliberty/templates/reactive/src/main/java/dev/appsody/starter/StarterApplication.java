@@ -2,14 +2,12 @@ package dev.appsody.starter;
 
 import java.util.logging.Logger;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
-
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
+import javax.enterprise.context.ApplicationScoped;
 
-@ApplicationPath("/starter")
-public class StarterApplication extends Application {
+@ApplicationScoped
+public class StarterApplication {
     private static Logger logger = Logger.getLogger(StarterApplication.class.getName());
 
     @Incoming("incomingTopic1")

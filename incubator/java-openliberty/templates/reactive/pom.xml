@@ -25,6 +25,11 @@
             <version>2.3.0</version>
         </dependency>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
           <groupId>io.openliberty.features</groupId>
           <artifactId>mpReactiveMessaging-1.0</artifactId>
           <type>esa</type>
