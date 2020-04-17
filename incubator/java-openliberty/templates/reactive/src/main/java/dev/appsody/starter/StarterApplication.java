@@ -1,14 +1,14 @@
 package dev.appsody.starter;
 
-import java.util.logging.Logger;
 
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 import org.eclipse.microprofile.reactive.messaging.Outgoing;
 import javax.enterprise.context.ApplicationScoped;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @ApplicationScoped
 public class StarterApplication {
-    private static Logger logger = Logger.getLogger(StarterApplication.class.getName());
+    private static Logger logger = LoggerFactory.getLogger(StarterApplication.class);
 
     @Incoming("incomingTopic1")
     @Outgoing("outgoingTopic1")
