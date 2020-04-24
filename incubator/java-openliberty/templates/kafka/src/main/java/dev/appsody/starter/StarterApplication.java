@@ -19,8 +19,9 @@ public class StarterApplication {
     @Incoming("incomingTopic1")
     @Outgoing("outgoingTopic1")
     public String processMessage(String message) {
-        logger.info("Message " + message);
-        return "Hello " + message;
+        String completeMessage = "Hello " + message;
+        logger.info("Message " + completeMessage);
+        return completeMessage;
     }
 
     /**
