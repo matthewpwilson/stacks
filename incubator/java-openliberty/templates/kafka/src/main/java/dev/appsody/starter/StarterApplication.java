@@ -9,17 +9,32 @@ import org.slf4j.LoggerFactory;
 @ApplicationScoped
 public class StarterApplication {
     private static Logger logger = LoggerFactory.getLogger(StarterApplication.class);
+    private String receivedMessage;
 
+    /**
+     * Process an event from one topic and emit a result to another.
+     * @param message
+     * @return
+     */
     @Incoming("incomingTopic1")
     @Outgoing("outgoingTopic1")
     public String processMessage(String message) {
         logger.info("Message " + message);
-
-        return message;
+        return "Hello " + message;
     }
 
+    /**
+     * Receive an event. This could be used to do something else with the data
+     * such as writing it to a database.
+     * @param message
+     */
     @Incoming("incomingTopic2")
     public void receiveMessage(String message) {
+        receivedMessage = message;
         logger.info("Message " + message);
     }
+
+	public String getReceivedMessage() {
+		return receivedMessage;
+	}
 }
