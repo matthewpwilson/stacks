@@ -1,6 +1,6 @@
 # Kafka template for Open Liberty
 
-This is a template for the development of Liberty applications that can connect to Kafka using MicroProfile Reactive Messaging. There is a simple StarterApplication that enables basic production and consumption of events. The instructions for getting this up and running are below. As part of this, we have included a `docker-compose.yaml` file which will start a local Kafka and Zookeeper. 
+This template can be used to develop Liberty applications that connect to Kafka by using MicroProfile Reactive messaging. A simple `StarterApplication` is included that enables basic production and consumption of events. 
 
 
 ## Getting Started with the StarterApplication.
@@ -16,20 +16,20 @@ appsody init java-openliberty reactive
 
 ### 2. Start Kafka and Zookeeper
 
-In order to run the StarterApplication we will need to start a Kafka and Zookeeper. For this, you can use the provided `docker-compose.yaml`.
+In order to run the `StarterApplication` you must start Kafka and Zookeeper containers. Use the `docker-compose.yaml` that is provided in the template.
 
 
-Start docker compose with 
+Start docker compose with the following command:
 
 ```docker-compose -f docker-compose.yaml up```
 
-If you run `docker network list`, you should see a new network, which will have the name of your directory with `_default` appended at the end. In this case it would be `test-appsody-reactive_default`.
+If you run `docker network list`, you should see a new network with the name of your project directory and the word `_default` appended. For example, `test-appsody-reactive_default`.
 
-If instead you want to connect to a Kafka broker elsewhere, edit `src/main/resources/META-INF/microprofile-config.properties` and set the value of `mp.messaging.connector.liberty-kafka.bootstrap.servers` property to the host and port of the your borker.
+Alternatively, if you want to connect to a Kafka broker elsewhere, edit `src/main/resources/META-INF/microprofile-config.properties` and set the value of the `mp.messaging.connector.liberty-kafka.bootstrap.servers` property to the host and port number of the your borker.
 
-### 3. Run the appsody application in the new network
+### 3. Run the Appsody application in the new network
 
-We need to run our appsody application in the same network as Kafka.
+Your Appsody application must be run in the same network as Kafka.
 
 Run the application using the following command:
 
@@ -41,7 +41,7 @@ Run another container in the same network:
 
 ```docker run -it --network test-appsody-reactive_default strimzi/kafka:0.16.0-kafka-2.4.0 /bin/bash```
 
-From within this container, we will produce a message. The following command will start a Kafka Producer using the console, writing out to incomingTopic1 :
+The next step is to produce a message. Use the following command to start a Kafka Producer that writes to `incomingTopic1`:
 
 ```bin/kafka-console-producer.sh --broker-list kafka:9092 --topic incomingTopic1```
 
@@ -49,18 +49,20 @@ Enter text at the prompt to produce a message.
 
 ### 5. Consume a message from a topic
 
-To view the messages, you can either see them in the appsody app terminal window or you can create a Kafka console consumer using the following command:
+To view the messages, you can either look at the console log from the Appsody application or you can create a Kafka console consumer using the following command:
 
 ```bin/kafka-console-consumer.sh --bootstrap-server kafka:9092 --topic incomingTopic1 --from-beginning```
 
 ## Deploying to Kubernetes
 
-When deploying to a Kubernetes environment, you will need to configure your application to connect the Kafka broker, for example deployed using the  [Strimzi Kafka operator](https://strimzi.io/docs/quickstart/latest/). To do this, first run
+When deploying to a Kubernetes environment, you must configure your application to connect to the Kafka broker.  You can use the [Strimzi Kafka operator](https://strimzi.io/docs/quickstart/latest/) to deploy a Kafka broker in a Kubernetes cluster. 
+
+To configure the connection, first run the following command:
 
 ```appsody build```
 
-This will generate an `app-deploy.yaml` file.
-Then you can edit it and override the bootstrap server configuration by setting an enviornment variable as follows:
+This command generates `app-deploy.yaml` file.
+Edit the file to override the bootstrap server configuration by setting an enviornment variable as follows:
 
 ```
 spec:

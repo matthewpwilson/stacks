@@ -67,7 +67,7 @@ The default template uses JUnit 5. You may be used to JUnit 4, but here are some
 
 ### Kafka template
 
-The kafka template allows yoo to develop applications that connect to Kafka using the mpReactiveMessaging feature. For more information see the [kafka readme](templates/kafka/README.md)
+The kafka template allows you to develop applications that connect to Kafka using MicroProfile Reactive Messaging. For more information, see the [kafka readme](templates/kafka/README.md).
 
 ## Getting Started
 
