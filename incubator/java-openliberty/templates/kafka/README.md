@@ -25,7 +25,7 @@ Start docker compose with the following command:
 
 If you run `docker network list`, you should see a new network with the name of your project directory and the word `_default` appended. For example, `test-appsody-reactive_default`.
 
-Alternatively, if you want to connect to a Kafka broker elsewhere, edit `src/main/resources/META-INF/microprofile-config.properties` and set the value of the `mp.messaging.connector.liberty-kafka.bootstrap.servers` property to the host and port number of the your borker.
+Alternatively, if you want to connect to a Kafka broker elsewhere, edit `src/main/resources/META-INF/microprofile-config.properties` and set the value of the `mp.messaging.connector.liberty-kafka.bootstrap.servers` property to the host and port number of the your broker.
 
 ### 3. Run the Appsody application in the new network
 
